@@ -36,14 +36,6 @@ RUN \
     pip3 install . && \
     cd ..
 
-# Install RISE for live slideshows, because we can!
-RUN \
-    git clone https://github.com/damianavila/RISE && \
-    cd RISE && \
-    pip3 install -r requirements.txt && \
-    pip3 install . && \
-    cd ..
-
 # Add default user and password
 RUN \
     groupadd -r jupyter && \
@@ -54,6 +46,16 @@ RUN \
 
 RUN \
     pip3 install "ipython[notebook]" bokeh
+
+# Install RISE for live slideshows, because we can!
+RUN \
+    git clone https://github.com/damianavila/RISE && \
+    cd RISE && \
+#    pip3 install -r requirements.txt && \
+#    pip3 install . && \
+    ipython profile create default && \
+    python3 setup.py install && \
+    cd ..
 
 CMD ["jupyterhub"]
 
