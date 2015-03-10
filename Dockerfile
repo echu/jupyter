@@ -51,7 +51,7 @@ RUN \
 # Would be nicer to just install it in the already running container?
 RUN \
     apt-get install -y libblas3 liblapack3 libgfortran3 libumfpack5.6.2 && \
-    pip3 install vincent scipy cvxpy sklearn
+    pip3 install vincent scipy cvxpy scikit-learn
 
 # Install RISE for live slideshows, because we can!
 RUN \
