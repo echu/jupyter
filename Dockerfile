@@ -15,11 +15,22 @@ RUN apt-get install -y git
 
 # Install python
 RUN \
-    apt-get install -y python3-dev python3 python python-dev python-pip python3-pip
+    apt-get install -y python3-dev python3 python python-dev #python-pip python3-pip
+
+# Install curl
+RUN \
+    apt-get install curl
+
+# Install pip by hand (to get latest)
+RUN \
+    curl -o get-pip.py https://bootstrap.pypa.io/get-pip.py && \
+    python get-pip.py && \
+    python3 get-pip.py
 
 # Update pip
-RUN \
-    pip install -U pip
+#RUN \
+#    pip install -U pip && \
+#    pip3 install -U pip
 
 # Install node (this step isn't generic python... ::shrug::)
 RUN \
