@@ -50,7 +50,7 @@ RUN \
 # Additional libraries you'd like installed? Kind of a hassle.
 # Would be nicer to just install it in the already running container?
 RUN \
-    apt-get install -y python-scipy python-numpy && \
+    apt-get install -y python3-scipy python3-numpy && \
     pip3 install vincent cvxpy scikit-learn
 
 # Install RISE for live slideshows, because we can!
