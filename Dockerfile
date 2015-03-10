@@ -50,9 +50,8 @@ RUN \
 # Additional libraries you'd like installed? Kind of a hassle.
 # Would be nicer to just install it in the already running container?
 RUN \
-    apt-get install -y libblas3 liblapack3 libgfortran3 libumfpack5.6.2 && \
-    pip3 install vincent scipy numpy && \
-    pip3 install cvxpy scikit-learn
+    apt-get install -y python-scipy python-numpy && \
+    pip3 install vincent cvxpy scikit-learn
 
 # Install RISE for live slideshows, because we can!
 RUN \
