@@ -53,10 +53,11 @@ RUN \
     cd RISE && \
 #    pip3 install -r requirements.txt && \
 #    pip3 install . && \
-    ipython profile create default && \
-    python3 setup.py install && \
+    IPYTHONDIR=/home/jupyter/.ipython ipython profile create default && \
+    IPYTHONDIR=/home/jupyter/.ipython python3 setup.py install && \
+    chown -R jupyter /home/jupyter/.ipython && \
     cd ..
 
-CMD ["jupyterhub"]
 
+CMD ["jupyterhub"]
 
