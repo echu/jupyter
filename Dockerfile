@@ -45,7 +45,13 @@ RUN \
     chown -R jupyter:jupyter /home/jupyter
 
 RUN \
-    pip3 install "ipython[notebook]" bokeh
+    pip3 install "ipython[notebook]"
+
+# Additional libraries you'd like installed? Kind of a hassle.
+# Would be nicer to just install it in the already running container?
+RUN \
+    apt-get install -y libblas liblapack && \
+    pip3 install vincent scipy cvxpy sklearn
 
 # Install RISE for live slideshows, because we can!
 RUN \
@@ -57,7 +63,6 @@ RUN \
     IPYTHONDIR=/home/jupyter/.ipython python3 setup.py install && \
     chown -R jupyter /home/jupyter/.ipython && \
     cd ..
-
 
 CMD ["jupyterhub"]
 
