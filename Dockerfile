@@ -19,8 +19,7 @@ RUN \
 
 # Update pip
 RUN \
-    pip install -U pip && \
-    pip3 install -U pip
+    pip install -U pip
 
 # Install node (this step isn't generic python... ::shrug::)
 RUN \
