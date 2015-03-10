@@ -19,7 +19,7 @@ RUN \
 
 # Install curl
 RUN \
-    apt-get install curl
+    apt-get install -y curl
 
 # Install pip by hand (to get latest)
 RUN \
