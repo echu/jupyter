@@ -51,7 +51,7 @@ RUN \
 # Would be nicer to just install it in the already running container?
 RUN \
     apt-get install -y python3-scipy python3-numpy && \
-    pip3 install vincent scikit-learn
+    pip3 install vincent scikit-learn kafka-python
 
 # Install RISE for live slideshows, because we can!
 RUN \
