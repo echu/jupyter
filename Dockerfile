@@ -39,7 +39,7 @@ RUN \
 # Add default user and password
 RUN \
     groupadd -r jupyter && \
-    useradd -r -g jupyter jupyter && \
+    useradd -r -g root jupyter && \
     echo jupyter:jupyter | chpasswd && \
     mkdir /home/jupyter && \
     chown -R jupyter:jupyter /home/jupyter
@@ -64,5 +64,11 @@ RUN \
     chown -R jupyter /home/jupyter/.ipython && \
     cd ..
 
-CMD ["jupyterhub"]
+# This is a dirty hack. The shell script emits a piece of python code that
+# copies the root's environment variables into a startup script before running
+# jupyterhub. This way, all environment variables available to the docker
+# container are available to the notebooks.
+ADD setup_nb_env.sh setup_nb_env.sh
+
+CMD /bin/sh -c "sh setup_nb_env.sh > /home/jupyter/.ipython/profile_default/startup/00-env.py && jupyterhub"
 
