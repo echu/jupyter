@@ -70,5 +70,11 @@ RUN \
 # container are available to the notebooks.
 ADD setup_nb_env.sh setup_nb_env.sh
 
+# Add sample kafka producer and consumer
+ADD Consumer.ipynb /home/jupyter/Consumer.ipynb
+ADD Producer.ipynb /home/jupyer/Producer.ipynb
+
+RUN chown -R jupyter /home/jupyter
+
 CMD /bin/sh -c "sh setup_nb_env.sh > /home/jupyter/.ipython/profile_default/startup/00-env.py && jupyterhub"
 
