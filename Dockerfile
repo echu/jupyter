@@ -72,7 +72,7 @@ ADD setup_nb_env.sh setup_nb_env.sh
 
 # Add sample kafka producer and consumer
 ADD Consumer.ipynb /home/jupyter/Consumer.ipynb
-ADD Producer.ipynb /home/jupyer/Producer.ipynb
+ADD Producer.ipynb /home/jupyter/Producer.ipynb
 
 RUN chown -R jupyter /home/jupyter
 
